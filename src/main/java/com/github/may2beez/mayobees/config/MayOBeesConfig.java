@@ -8,6 +8,7 @@ import cc.polyfrost.oneconfig.config.core.OneKeyBind;
 import cc.polyfrost.oneconfig.config.data.InfoType;
 import cc.polyfrost.oneconfig.config.data.Mod;
 import cc.polyfrost.oneconfig.config.data.ModType;
+import com.github.may2beez.mayobees.hud.InventoryPreviewHUD;
 import com.github.may2beez.mayobees.module.ModuleManager;
 import com.github.may2beez.mayobees.module.impl.combat.AutoClicker;
 import com.github.may2beez.mayobees.module.impl.other.Dev;
@@ -1236,6 +1237,20 @@ public class MayOBeesConfig extends Config {
     )
     public static int visitorHelperGuiTimeoutTime = 750;
     //</editor-fold>
+    //</editor-fold>
+
+    //<editor-fold desc="HUD">
+    @Slider(
+            name = "Scale", category = "HUD",
+            min = 1f, max = 200f
+    )
+    public static int scale = 10;
+
+    @HUD(
+            name = "Inventory Preview", category = "HUD"
+    )
+    public static InventoryPreviewHUD inventoryPreviewHUD = new InventoryPreviewHUD();
+
     //</editor-fold>
 
     public MayOBeesConfig() {

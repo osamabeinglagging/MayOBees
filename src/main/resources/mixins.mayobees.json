@@ -19,6 +19,6 @@
     "gui.GuiContainerAccessor",
     "gui.MixinGuiContainer",
     "network.MixinNetHandlerPlayClient",
-    "render.MixinModelBiped"
+    "render.MixinModelBiped",
   ]
 }

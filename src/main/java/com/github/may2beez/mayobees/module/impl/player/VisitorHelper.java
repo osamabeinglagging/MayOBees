@@ -9,7 +9,7 @@ import com.github.may2beez.mayobees.mixin.gui.GuiContainerAccessor;
 import com.github.may2beez.mayobees.module.IModuleActive;
 import com.github.may2beez.mayobees.util.InventoryUtils;
 import com.github.may2beez.mayobees.util.LogUtils;
-import com.github.may2beez.mayobees.util.MouseUtils;
+import com.github.may2beez.mayobees.util.ScaleUtils;
 import kotlin.Pair;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -97,7 +97,7 @@ public class VisitorHelper implements IModuleActive {
             GuiContainerAccessor gui = ((GuiContainerAccessor) event.gui);
             int width = gui.getXSize();
             int height = gui.getYSize();
-            button = new GuiButton(100, (MouseUtils.getScaledWidth() / 2) + (int) (width * 0.6), (MouseUtils.getScaledHeight() / 2) - (int) (height * 0.2), 100, 20, "Buy Items");
+            button = new GuiButton(100, (ScaleUtils.getScaledWidth() / 2) + (int) (width * 0.6), (ScaleUtils.getScaledHeight() / 2) - (int) (height * 0.2), 100, 20, "Buy Items");
 
             Slot acceptSlot = visitorGuiButtons.stream().filter(slot -> StringUtils.stripControlCodes(slot.getStack().getDisplayName()).equals("Accept Offer")).findFirst().orElse(null);
             if (acceptSlot == null) {
@@ -139,14 +139,14 @@ public class VisitorHelper implements IModuleActive {
     @SubscribeEvent
     public void onRender(GuiScreenEvent.BackgroundDrawnEvent event) {
         if (!(event.gui instanceof GuiChest) || !isRunning() || button == null) return;
-        button.drawButton(mc, MouseUtils.getX(), MouseUtils.getY());
+        button.drawButton(mc, ScaleUtils.getMouseX(), ScaleUtils.getMouseY());
     }
 
     @SubscribeEvent
     public void onClick(GuiScreenEvent.MouseInputEvent event) {
         if (!(event.gui instanceof GuiChest) || !isRunning() || !Mouse.isButtonDown(0) && !Mouse.getEventButtonState() || button == null)
             return;
-        if (!button.mousePressed(mc, MouseUtils.getX(), MouseUtils.getY())) return;
+        if (!button.mousePressed(mc, ScaleUtils.getMouseX(), ScaleUtils.getMouseY())) return;
         handleMousePress();
     }
 
